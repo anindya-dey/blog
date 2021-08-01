@@ -14,9 +14,15 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="text-center">
-        <Link href="/"><a><h1 className="mt-5 mb-3 font-medium text-7xl text-gray-800">{PageTitle}</h1></a></Link>
+        <Link href="/">
+          <a>
+            <h1 className="mt-5 mb-2 font-medium text-7xl text-gray-800">
+              {PageTitle}
+            </h1>
+          </a>
+        </Link>
         <nav>
-          <ul className="px-4 py-3 flex justify-center space-x-6 text-gray-600 uppercase">
+          <ul className="px-4 py-3 flex justify-center space-x-10 text-blue-700">
             <li>
               <Link href="/">
                 <a>Home</a>
@@ -33,8 +39,10 @@ function MyApp({ Component, pageProps }) {
 
       <Component {...pageProps} />
 
-      <footer>
-        <h3 className="mb-3 font-thin font-mono text-xl text-gray-600">&copy; <a href="https://anindyadey.com">Anindya</a></h3>
+      <footer className="mt-6 text-center">
+        <h3 className="mb-3 font-thin font-mono text-sm text-gray-600">
+          &copy; <a href="https://anindyadey.com">Anindya</a>
+        </h3>
       </footer>
     </div>
   );
