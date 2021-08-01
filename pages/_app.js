@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
       <header className="text-center">
         <Link href="/">
           <a>
-            <h1 className="mt-5 mb-2 font-medium text-4xl sm:text-7xl text-gray-800">
+            <h1 className="mt-5 mb-2 font-medium text-4xl sm:text-6xl text-gray-800">
               {PageTitle}
             </h1>
           </a>
