@@ -16,13 +16,13 @@ function MyApp({ Component, pageProps }) {
       <header className="text-center">
         <Link href="/">
           <a>
-            <h1 className="mt-5 mb-2 font-medium text-7xl text-gray-800">
+            <h1 className="mt-5 mb-2 font-medium text-4xl sm:text-6xl text-gray-800">
               {PageTitle}
             </h1>
           </a>
         </Link>
         <nav>
-          <ul className="px-4 py-3 flex justify-center space-x-10 text-blue-700">
+          <ul className="px-4 sm:py-3 flex justify-center space-x-10 text-blue-700 text-sm sm:text-lg">
             <li>
               <Link href="/">
                 <a>Home</a>
