@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import { Post, PostWidget, Categories } from "../components";
+
 const posts = [
   {
     title: "React Testing",
@@ -23,15 +25,13 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="col-span-1 lg:col-span-8">
             {posts.map((post, index) => (
-              <div key={index}>
-                <h1>{post.title}</h1>
-                <div>{post.excerpt}</div>
-              </div>
+              <Post key={index} post={post} />
             ))}
           </div>
           <div className="col-span-1 lg:col-span-4">
             <div className="relative lg:sticky top-8">
-
+              <PostWidget />
+              <Categories />
             </div>
           </div>
         </div>
