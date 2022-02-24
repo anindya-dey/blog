@@ -1,25 +1,41 @@
-import Link from 'next/link';
+import Head from "next/head";
 
-import { BlogPosts } from '../data/blog-posts';
+const posts = [
+  {
+    title: "React Testing",
+    excerpt: "Learn React testing",
+  },
+  {
+    title: "React with Tailwind",
+    excerpt: "Learn React with TailwindCSS",
+  },
+];
 
 export default function Home() {
   return (
-      <div className="mt-3 grid sm:grid-cols-2 grid-cols-1 gap-4">
-        {
-          BlogPosts.map(blog => (
-            <BlogItem key={blog.slug} {...blog} />
-          ))
-        }
-    </div>
-  )
-}
+    <>
+      <div className="container mx-auto px-10 mb-8">
+        <Head>
+          <title>Anindya | Blog</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-function BlogItem({ title, slug, createdOn, content }) {
-  return (
-    <div className="p-6 border border-gray-300 rounded-lg">
-      <div className="sm:text-2xl text-lg font-bold text-blue-500"><Link href={`blogs/${slug}`}><a>{title}</a></Link></div>
-      <div className="text-sm font-light text-gray-500">Posted on: {createdOn}</div>
-      <div className="smtext-lg text-sm text-gray-700">{content}</div>
-    </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="col-span-1 lg:col-span-8">
+            {posts.map((post, index) => (
+              <div key={index}>
+                <h1>{post.title}</h1>
+                <div>{post.excerpt}</div>
+              </div>
+            ))}
+          </div>
+          <div className="col-span-1 lg:col-span-4">
+            <div className="relative lg:sticky top-8">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
