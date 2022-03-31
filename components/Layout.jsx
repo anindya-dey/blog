@@ -5,10 +5,13 @@ import { Header } from "./";
 const Layout = ({ children }) => {
   return (
     <>
-      <Header />
-      {children}
+      <div className="bg-hero bg-repeat-y">
+        <Header />
+        {children}
+      </div>
     </>
   );
 };
 
 export default Layout;
+
