@@ -16,7 +16,7 @@ const PostCard = ({ post }) => {
         <Link href={`/post/${post.slug}`}>{post.title}</Link>
       </h1>
       <div>
-        <div className="mb-4 flex items-center justify-center">
+        <div className="mb-4 flex items-center justify-center space-x-3">
           <img
             src={post.author.photo.url}
             alt={post.author.name}
