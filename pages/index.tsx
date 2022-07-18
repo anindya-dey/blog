@@ -1,8 +1,19 @@
-import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { gql } from "graphql-request";
 
-const Home: NextPage = () => {
+import hygraph from "../util/hygraph";
+
+export default function Home({
+  posts,
+}: {
+  posts: {
+    publishedAt: string;
+    title: string;
+    excerpt: string;
+    categories: { slug: string }[];
+  }[];
+}) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -26,6 +37,27 @@ const Home: NextPage = () => {
             <div className="mt-6">
               <span className="mr-4 bg-blue-100 px-4 py-2 text-sm text-gray-600 rounded-md">
                 docker
+              </span>
+            </div>
+          </a>
+
+          <a
+            href="https://nextjs.org/docs"
+            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
+          >
+            <h3 className="text-2xl font-bold">{posts[0].title}</h3>
+            <h5 className="mt-2 text-sm text-gray-500">
+              {new Date(posts[0].publishedAt).toLocaleDateString("en-gb", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                timeZone: "utc",
+              })}
+            </h5>
+            <p className="mt-4 text-xl">{posts[0].excerpt}</p>
+            <div className="mt-6">
+              <span className="mr-4 bg-blue-100 px-4 py-2 text-sm text-gray-600 rounded-md">
+                {posts[0].categories[0].slug}
               </span>
             </div>
           </a>
@@ -95,7 +127,31 @@ const Home: NextPage = () => {
       </footer>
     </div>
   );
-};
+}
 
-export default Home;
+const QUERY = gql`
+  {
+    posts {
+      slug
+      title
+      excerpt
+      author {
+        name
+      }
+      publishedAt
+      categories {
+        slug
+      }
+    }
+  }
+`;
 
+export async function getStaticProps() {
+  const { posts } = await hygraph.request(QUERY);
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
