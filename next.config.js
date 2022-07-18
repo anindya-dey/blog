@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-import * as dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
 
 module.exports = {
   reactStrictMode: true,
