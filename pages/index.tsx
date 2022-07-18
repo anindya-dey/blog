@@ -56,7 +56,7 @@ const QUERY = gql`
   }
 `;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { posts } = await hygraph.request(QUERY);
 
   return {
