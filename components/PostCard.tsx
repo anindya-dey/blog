@@ -1,5 +1,6 @@
 import React from "react";
 import { Post } from "../models";
+import Image from "next/image";
 
 export default function PostCard({ post }: { post: Post }) {
   return (
@@ -45,12 +46,14 @@ export default function PostCard({ post }: { post: Post }) {
           </a>
 
           <div className="flex items-center">
-            <img
-              className="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
-              src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80"
+            <Image
+              className="object-cover rounded-full sm:block"
+              src={post.author.photo.url}
               alt="avatar"
+              width={40}
+              height={40}
             />
-            <a className="font-bold text-gray-700 cursor-pointer dark:text-gray-200">
+            <a className="font-bold text-gray-700 ml-4 cursor-pointer dark:text-gray-200">
               { post.author.name }
             </a>
           </div>
