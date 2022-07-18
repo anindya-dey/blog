@@ -6,6 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "dotenv": "^16.0.1",
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0",
     "next": "latest",
     "react": "18.1.0",
     "react-dom": "18.1.0"
