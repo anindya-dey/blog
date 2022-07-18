@@ -17,18 +17,6 @@ export default function Home({ posts }: { posts: Post[] }) {
         {posts.map((post: Post, index: number) => (
           <PostCard key={index} post={post} />
         ))}
-
-        {posts.map((post: Post, index: number) => (
-          <PostCard key={index} post={post} />
-        ))}
-
-        {posts.map((post: Post, index: number) => (
-          <PostCard key={index} post={post} />
-        ))}
-
-        {posts.map((post: Post, index: number) => (
-          <PostCard key={index} post={post} />
-        ))}
       </main>
 
       <Footer />
