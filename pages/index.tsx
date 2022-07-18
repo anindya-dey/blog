@@ -14,14 +14,10 @@ export default function Home({ posts }: { posts: Post[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">Namaste World! 🙏</h1>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          {posts.map((post: Post, index: number) => (
-            <PostCard key={index} post={post} />
-          ))}
-        </div>
+      <main className="space-y-4">
+        {posts.map((post: Post, index: number) => (
+          <PostCard key={index} post={post} />
+        ))}
       </main>
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
@@ -65,3 +61,4 @@ export async function getServerSideProps() {
     },
   };
 }
+
