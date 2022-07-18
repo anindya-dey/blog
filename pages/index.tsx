@@ -1,13 +1,19 @@
-import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { gql } from "graphql-request";
 
 import hygraph from "../util/hygraph";
 
-console.log(process.env.GRAPHCMS_URL)
-
-const Home: NextPage = ({ posts }) => {
+export default function Home({
+  posts,
+}: {
+  posts: {
+    publishedAt: string;
+    title: string;
+    excerpt: string;
+    categories: { slug: string }[];
+  }[];
+}) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -121,7 +127,7 @@ const Home: NextPage = ({ posts }) => {
       </footer>
     </div>
   );
-};
+}
 
 const QUERY = gql`
   {
@@ -149,6 +155,3 @@ export async function getStaticProps() {
     },
   };
 }
-
-export default Home;
-
