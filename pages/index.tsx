@@ -2,10 +2,10 @@ import Head from "next/head";
 import { gql } from "graphql-request";
 
 import hygraph from "../util/hygraph";
-import { Post } from "../models";
-import { PostCard , Footer } from "../components";
+import { PostCardModel } from "../models";
+import { PostCardComponent, Footer } from "../components";
 
-export default function Home({ posts }: { posts: Post[] }) {
+export default function Home({ posts }: { posts: PostCardModel[] }) {
   return (
     <>
       <Head>
@@ -13,11 +13,13 @@ export default function Home({ posts }: { posts: Post[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mt-6 space-y-6">
-        {posts.map((post: Post, index: number) => (
-          <PostCard key={index} post={post} />
-        ))}
-      </main>
+      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
+          {posts.map((post: PostCardModel, index: number) => (
+            <PostCardComponent key={index} post={post} />
+          ))}
+        </div>
+      </div>
 
       <Footer />
     </>
@@ -30,15 +32,20 @@ const QUERY = gql`
       slug
       title
       excerpt
+      coverImage {
+        url
+        width
+        height
+      }
+      date
+      tags
       author {
         name
-        photo {
+        picture {
           url
+          width
+          height
         }
-      }
-      publishedAt
-      categories {
-        slug
       }
     }
   }
@@ -53,3 +60,4 @@ export async function getServerSideProps() {
     },
   };
 }
+
