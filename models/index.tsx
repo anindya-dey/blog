@@ -1,4 +1,4 @@
-export { default as Post } from "./Post";
-export { default as Author } from "./Author";
 export { default as Category } from "./Category";
-export { default as Photo } from "./Photo";
+export { default as ImageAssetModel } from "./ImageAsset.model";
+export { default as AuthorModel } from "./Author.model";
+export { default as PostCardModel } from "./PostCard.model";

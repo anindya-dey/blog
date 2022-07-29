@@ -8,6 +8,6 @@ module.exports = {
     GRAPHCMS_URL: process.env.GRAPHCMS_URL
   },
   images: {
-    domains: ['media.graphassets.com'],
+    domains: [process.env.GRAPHCMS_ASSETS_DOMAIN],
   },
 }
