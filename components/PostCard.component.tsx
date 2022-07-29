@@ -5,11 +5,10 @@ import { PostCardModel } from "../models";
 export default function PostCard({ post }: { post: PostCardModel }) {
   return (
     <>
-      <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
-        <img
-          src="https://media.graphassets.com/o3aRpaR6T3JHG9y4q0vb"
-          className="object-cover w-full h-64"
-          alt=""
+      <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-md shadow-black">
+        <Image src={post.coverImage.url}
+        height={post.coverImage.height}
+        width={post.coverImage.width}
         />
         <div className="p-5 border border-t-0">
           <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
