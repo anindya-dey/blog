@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import type {   } from "next/document";
 
 import Header from "./Header";
 
