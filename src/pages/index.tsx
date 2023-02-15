@@ -12,10 +12,48 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h1 className="text-3xl font-bold underline">
-          Hello world!
-        </h1>
+      <main className='h-screen bg-slate-200'>
+        <div className='grid w-2/3 grid-cols-3 gap-6 p-4 m-auto'>
+          <div className='p-6 bg-gray-100 border border-gray-200 shadow rounded-xl'>
+            <div className='flex justify-between'>
+              <div className='px-6 py-3 bg-gray-300 rounded-full'> </div>
+              <div className='flex flex-col px-4 align-left'>
+                <span className='font-semibold text-gray-800'>Anindya Dey</span>
+                <span className='text-gray-500'>@andys_cli</span>
+              </div>
+              <div className='px-6 py-3 bg-gray-200 rounded-full'> </div>
+            </div>
+            <div className='mt-4 text-gray-700'>
+              We just bought this at work and I absolutely love it. You guys did a great job. I do a lot of UI work but did it based on &ldquo;feel&rdquo; but couldn&apos;t explain why... your book does exactly that. Great work!
+            </div>
+          </div>
+          <div className='p-6 bg-gray-100 border border-gray-200 shadow rounded-xl'>
+            <div className='flex justify-between'>
+              <div className='px-6 py-3 bg-gray-300 rounded-full'> </div>
+              <div className='flex flex-col px-4 align-left'>
+                <span className='font-semibold text-gray-800'>Anindya Dey</span>
+                <span className='text-gray-500'>@andys_cli</span>
+              </div>
+              <div className='px-6 py-3 bg-gray-200 rounded-full'> </div>
+            </div>
+            <div className='mt-4 text-gray-700'>
+            I can definitely see why this book is called “Refactoring UI” … tons of UI smells / anti-patterns and how to correct them with great examples for each case. 👍 Congrats @adamwathan and @steveschoger  on the launch!
+            </div>
+          </div>
+          <div className='p-6 bg-gray-100 border border-gray-200 shadow rounded-xl'>
+            <div className='flex justify-between'>
+              <div className='px-6 py-3 bg-gray-300 rounded-full'> </div>
+              <div className='flex flex-col px-4 align-left'>
+                <span className='font-semibold text-gray-800'>Anindya Dey</span>
+                <span className='text-gray-500'>@andys_cli</span>
+              </div>
+              <div className='px-6 py-3 bg-gray-200 rounded-full'> </div>
+            </div>
+            <div className='mt-4 text-gray-700'>
+            I can proudly say that this is the best purchase I have made in a long time. Maybe ever! I love how visual it is -- forcing my wife to read it next! 😂
+            </div>
+          </div>
+        </div>
       </main>
     </>
   )
