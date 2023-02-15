@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
-
-require("dotenv").config();
-
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
   env: {
     GRAPHCMS_URL: process.env.GRAPHCMS_URL
@@ -11,3 +8,5 @@ module.exports = {
     domains: [process.env.GRAPHCMS_ASSETS_DOMAIN],
   },
 }
+
+module.exports = nextConfig
