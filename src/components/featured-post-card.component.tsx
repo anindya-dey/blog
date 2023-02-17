@@ -1,29 +1,59 @@
-export default function FeaturedPostCardComponent() {
+export default function FeaturedPostCard() {
   return (
     <>
-      <article className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:animate-background hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-        <div className="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
-          <time dateTime="2022-10-10" className="block text-xs text-gray-500">
-            10th Oct 2022
-          </time>
+      <div className="max-w-2xl px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-light text-gray-600 dark:text-gray-400">
+            Mar 10, 2019
+          </span>
+          <a
+            className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-300 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500"
+            role="button"
+          >
+            Design
+          </a>
+        </div>
 
-          <a href="#">
-            <h3 className="mt-0.5 text-lg font-medium text-gray-900">
-              How to center an element using JavaScript and jQuery
-            </h3>
+        <div className="mt-2">
+          <a
+            href="#"
+            className="text-xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline"
+            role="link"
+          >
+            Accessibility tools for designers and developers
+          </a>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora
+            expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos
+            enim reprehenderit nisi, accusamus delectus nihil quis facere in
+            modi ratione libero!
+          </p>
+        </div>
+
+        <div className="flex items-center justify-between mt-4">
+          <a
+            href="#"
+            className="text-blue-600 dark:text-blue-400 hover:underline"
+            role="link"
+          >
+            Read more
           </a>
 
-          <div className="mt-4 flex flex-wrap gap-1">
-            <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
-              Snippet
-            </span>
-
-            <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
-              JavaScript
-            </span>
+          <div className="flex items-center">
+            <img
+              className="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"
+              src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80"
+              alt="avatar"
+            />
+            <a
+              className="font-bold text-gray-700 cursor-pointer dark:text-gray-200"
+              role="link"
+            >
+              Khatab wedaa
+            </a>
           </div>
         </div>
-      </article>
+      </div>
     </>
   );
 }

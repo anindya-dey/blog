@@ -1,12 +1,12 @@
-interface IPostCardComponentProps {
+interface IPostCardProps {
   title: string;
   excerpt: string;
 }
 
-export default function PostCardComponent({
+export default function PostCard({
   title,
   excerpt,
-}: IPostCardComponentProps) {
+}: IPostCardProps) {
   return (
     <>
       <article className="rounded-lg border border-gray-100 p-4 shadow-sm transition hover:shadow-lg sm:p-6">

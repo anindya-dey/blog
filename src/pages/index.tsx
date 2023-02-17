@@ -2,8 +2,9 @@ import Head from "next/head";
 import { Inter } from "@next/font/google";
 import { gql } from "graphql-request";
 import graphqlClient from "@/utils/graphql-client";
-import PostCardComponent from "@/components/post-card.component";
-import FeaturedPostCardComponent from "@/components/featured-post-card.component";
+import PostCard from "@/components/post-card.component";
+import Nav from "@/components/nav.component";
+import FeaturedPostCard from "@/components/featured-post-card.component";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,10 +30,7 @@ export default function Home() {
       </Head>
       <main className="h-screen">
         <div className="px-6 py-4">
-          <PostCardComponent
-            title="qwerty"
-            excerpt="qwerty qwerty qwerty qwerty"
-          />
+          <PostCard title="qwerty" excerpt="qwerty qwerty qwerty qwerty" />
         </div>
       </main>
     </>
