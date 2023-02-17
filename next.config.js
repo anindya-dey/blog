@@ -2,10 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    GRAPHCMS_URL: process.env.GRAPHCMS_URL
+    HYGRAPH_ENDPOINT: process.env.HYGRAPH_ENDPOINT
   },
   images: {
-    domains: [process.env.GRAPHCMS_ASSETS_DOMAIN],
+    domains: [process.env.HYGRAPH_ASSETS_DOMAIN],
   },
 }
 
