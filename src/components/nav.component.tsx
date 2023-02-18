@@ -127,7 +127,7 @@ export default function Nav({ navItems }: INavProps) {
       <div
         className={`${
           isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
-        } md:hidden flex w-2/3 px-4 py-4 h-full absolute transition-all duration-300 ease-in-out bg-white dark:bg-gray-900`}
+        } md:hidden flex px-4 py-4 w-full h-full absolute transition-all duration-300 ease-in-out bg-white dark:bg-gray-900`}
       >
         <div className="flex flex-col text-gray-600 capitalize dark:text-gray-300">
           {navItems.map((item, index) => (

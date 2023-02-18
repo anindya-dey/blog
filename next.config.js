@@ -5,7 +5,20 @@ const nextConfig = {
     HYGRAPH_ENDPOINT: process.env.HYGRAPH_ENDPOINT
   },
   images: {
-    domains: [process.env.HYGRAPH_ASSETS_DOMAIN],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.graphassets.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 }
 

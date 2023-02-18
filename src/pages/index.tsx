@@ -16,7 +16,6 @@ export default function Home({ postCards }: InferGetStaticPropsType<typeof getSt
     "About", "Careers", "History", "Services", "Blog"
   ]
 
-  console.log("Home", postCards);
   return (
     <>
       <Head>
