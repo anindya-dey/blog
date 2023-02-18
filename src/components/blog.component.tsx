@@ -24,13 +24,13 @@ export default function Blog({ postCards }: IBlogProps) {
 
             <div className="bg-white p-4 dark:bg-gray-900 sm:p-6">
               <time
-                dateTime="2022-10-10"
+                dateTime={post.date}
                 className="block text-xs text-gray-500 dark:text-gray-400"
               >
-                10th Oct 2022
+                {post.date}
               </time>
 
-              <a href="#">
+              <a href={`/posts/${post.slug}`}>
                 <h3 className="mt-0.5 text-lg text-gray-900 dark:text-white">
                   {post.title}
                 </h3>
@@ -40,13 +40,13 @@ export default function Blog({ postCards }: IBlogProps) {
                 {post.excerpt}
               </p>
               <div className="mt-4 flex flex-wrap gap-1">
-                <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600 dark:bg-purple-600 dark:text-purple-100">
-                  Snippet
-                </span>
-
-                <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600 dark:bg-purple-600 dark:text-purple-100">
-                  JavaScript
-                </span>
+                {
+                  post.tags?.map((tag, index) => (
+                  <span key={index} className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600 dark:bg-purple-600 dark:text-purple-100">
+                    {tag}
+                  </span>
+                  ))
+                }
               </div>
             </div>
           </article>

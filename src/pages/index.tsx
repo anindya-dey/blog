@@ -10,11 +10,10 @@ import { PostCard } from "@/types/post-card.type";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ postCards }: InferGetStaticPropsType<typeof getStaticProps>) {
-  
-  const navItems = [
-    "About", "Careers", "History", "Services", "Blog"
-  ]
+export default function Home({
+  postCards,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const navItems = ["About", "Careers", "History", "Services", "Blog"];
 
   return (
     <>
@@ -25,8 +24,8 @@ export default function Home({ postCards }: InferGetStaticPropsType<typeof getSt
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="h-screen">
-        <Nav navItems={navItems}/>
-        <Blog postCards={postCards}/>
+        <Nav navItems={navItems} />
+        <Blog postCards={postCards} />
       </main>
     </>
   );
@@ -36,20 +35,23 @@ export const getStaticProps: GetStaticProps<{ postCards: PostCard[] }> = async (
   context
 ) => {
   const query = gql`
-  query Assets {
-    posts {
-      excerpt
-      title
+    query Assets {
+      posts {
+        excerpt
+        title
+        tags
+        date
+        slug
+      }
     }
-  }
-`;
-const { posts: postCards} = await graphqlClient.request(query);
+  `;
+  const { posts: postCards } = await graphqlClient.request(query);
 
-//console.log(postCards);
-
-return {
-  props: {
-      postCards
-  }
-}
-}
+  console.log(postCards);
+  
+  return {
+    props: {
+      postCards,
+    },
+  };
+};

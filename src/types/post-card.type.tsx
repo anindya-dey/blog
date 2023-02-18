@@ -1,5 +1,7 @@
 export type PostCard = {
     title: string;
     excerpt: string;
-    publishedOn: Date;
+    tags: string[]
+    date: string;
+    slug: string;
 }
