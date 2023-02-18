@@ -106,8 +106,8 @@ export default function Nav({ navItems }: INavProps) {
                   >
                     {isOpen ? (
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         d="M6 18L18 6M6 6l12 12"
                       />
                     ) : (
@@ -126,8 +126,8 @@ export default function Nav({ navItems }: INavProps) {
       </header>
       <div
         className={`${
-          isOpen ? "translate-x-0 opacity-100 " : "opacity-0 -translate-x-full"
-        } md:hidden flex w-2/3 px-4 py-4 h-full transition-all duration-300 ease-in-out bg-white dark:bg-gray-900`}
+          isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
+        } md:hidden flex w-2/3 px-4 py-4 h-full absolute transition-all duration-300 ease-in-out bg-white dark:bg-gray-900`}
       >
         <div className="flex flex-col text-gray-600 capitalize dark:text-gray-300">
           {navItems.map((item, index) => (

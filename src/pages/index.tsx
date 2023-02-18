@@ -1,31 +1,22 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import { gql } from "graphql-request";
-import graphqlClient from "@/utils/graphql-client";
-import PostCard from "@/components/post-card.component";
-import Nav from "@/components/nav.component";
-import FeaturedPostCard from "@/components/featured-post-card.component";
+import { GetStaticProps, InferGetStaticPropsType } from "next/types";
 
-import { useEffect, useState } from "react";
+import graphqlClient from "@/utils/graphql-client";
+import Nav from "@/components/nav.component";
+import Blog from "@/components/blog.component";
+import { PostCard } from "@/types/post-card.type";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ postCards }: InferGetStaticPropsType<typeof getStaticProps>) {
   
   const navItems = [
     "About", "Careers", "History", "Services", "Blog"
   ]
-  const query = gql`
-    query Assets {
-      posts {
-        excerpt
-        title
-      }
-    }
-  `;
 
-  graphqlClient.request(query).then((data) => console.log(data));
-
+  console.log("Home", postCards);
   return (
     <>
       <Head>
@@ -36,7 +27,30 @@ export default function Home() {
       </Head>
       <main className="h-screen">
         <Nav navItems={navItems}/>
+        <Blog postCards={postCards}/>
       </main>
     </>
   );
+}
+
+export const getStaticProps: GetStaticProps<{ postCards: PostCard[] }> = async (
+  context
+) => {
+  const query = gql`
+  query Assets {
+    posts {
+      excerpt
+      title
+    }
+  }
+`;
+const { posts: postCards} = await graphqlClient.request(query);
+
+//console.log(postCards);
+
+return {
+  props: {
+      postCards
+  }
+}
 }
