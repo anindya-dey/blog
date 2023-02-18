@@ -6,9 +6,15 @@ import PostCard from "@/components/post-card.component";
 import Nav from "@/components/nav.component";
 import FeaturedPostCard from "@/components/featured-post-card.component";
 
+import { useEffect, useState } from "react";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  
+  const navItems = [
+    "About", "Careers", "History", "Services", "Blog"
+  ]
   const query = gql`
     query Assets {
       posts {
@@ -29,9 +35,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="h-screen">
-        <div className="px-6 py-4">
-          <PostCard title="qwerty" excerpt="qwerty qwerty qwerty qwerty" />
-        </div>
+        <Nav navItems={navItems}/>
       </main>
     </>
   );

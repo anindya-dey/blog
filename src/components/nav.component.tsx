@@ -1,119 +1,146 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
-export default function Nav() {
+interface INavProps {
+  navItems: string[];
+}
+
+export default function Nav({ navItems }: INavProps) {
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  } // To avoid hydration error
+
   return (
     <>
-      <nav
-        x-data="{ isOpen: false }"
-        className="relative bg-white shadow dark:bg-gray-800"
+      <header
+        aria-label="Site Header"
+        className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700"
       >
-        <div className="container px-6 py-3 mx-auto md:flex">
-          <div className="flex items-center justify-between">
-            <a href="#">
-              <img
-                className="w-auto h-6 sm:h-7"
-                src="https://merakiui.com/images/full-logo.svg"
-                alt=""
-              />
-            </a>
-
-            <div className="flex lg:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                type="button"
-                className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
-                aria-label="toggle menu"
-              >
-                <svg
-                  x-show="!isOpen"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M4 8h16M4 16h16"
-                  />
-                </svg>
-
-                <svg
-                  x-show="isOpen"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div
-            className={`${
-              isOpen
-                ? "translate-x-0 opacity-100 "
-                : "opacity-0 -translate-x-full"
-            } absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:opacity-100 md:translate-x-0 md:flex md:items-center md:justify-between`}
-          >
-            <div className="flex flex-col px-2 -mx-4 md:flex-row md:mx-10 md:py-0">
-              <a
-                href="#"
-                className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2"
-              >
-                About
-              </a>
-              <a
-                href="#"
-                className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2"
-              >
-                Contact
-              </a>
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            <div className="md:flex md:items-center md:gap-12">
+              <h1 className="text-3xl font-bold text-gray-600 dark:text-gray-200">
+                AD.
+              </h1>
             </div>
 
-            <div className="relative mt-4 md:mt-0">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                <svg
-                  className="w-5 h-5 text-gray-400"
-                  viewBox="0 0 24 24"
-                  fill="none"
+            <div className="hidden md:block">
+              <nav aria-label="Site Nav">
+                <ul className="flex items-center gap-6 text-sm">
+                  {navItems.map((item, index) => (
+                    <li key={index}>
+                      <a
+                        className="text-gray-600 transition hover:text-gray-600/75 dark:text-gray-200 dark:hover:text-gray-200/75"
+                        href="#"
+                      >
+                        {item}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="sm:flex sm:gap-4">
+                <button
+                  className="transition inline-block rounded-full border border-gray-600 p-3 text-gray-600 hover:bg-gray-600 hover:text-gray-200 focus:outline-none focus:ring-0 active:bg-gray-600"
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 >
-                  <path
-                    d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                  <span className="sr-only">Theme Toggle</span>
+
+                  {theme == "dark" ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+                      />
+                    </svg>
+                  )}
+                </button>
+              </div>
+
+              <div className="block md:hidden">
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="transition inline-block rounded-full border border-gray-600 p-3 text-gray-600 hover:bg-gray-600 hover:text-gray-200 focus:outline-none focus:ring-0 active:bg-gray-600"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </svg>
-              </span>
-
-              <input
-                type="text"
-                className="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
-                placeholder="Search"
-              />
+                    strokeWidth="2"
+                  >
+                    {isOpen ? (
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    ) : (
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    )}
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </nav>
+      </header>
+      <div
+        className={`${
+          isOpen ? "translate-x-0 opacity-100 " : "opacity-0 -translate-x-full"
+        } md:hidden flex w-2/3 px-4 py-4 h-full transition-all duration-300 ease-in-out bg-white dark:bg-gray-900`}
+      >
+        <div className="flex flex-col text-gray-600 capitalize dark:text-gray-300">
+          {navItems.map((item, index) => (
+            <a
+              key={index}
+              href="#"
+              className="mt-2 transition-colors duration-300 transform hover:text-gray-900 dark:hover:text-gray-200"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
