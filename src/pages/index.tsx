@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import { gql } from "graphql-request";
-import { GetStaticProps, InferGetStaticPropsType } from "next/types";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 
 import graphqlClient from "@/utils/graphql-client";
 import Nav from "@/components/nav.component";
@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({
   postCards,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const navItems = ["About", "Careers", "History", "Services", "Blog"];
 
   return (
@@ -31,7 +31,7 @@ export default function Home({
   );
 }
 
-export const getStaticProps: GetStaticProps<{ postCards: PostCard[] }> = async (
+export const getServerSideProps: GetServerSideProps<{ postCards: PostCard[] }> = async (
   context
 ) => {
   const query = gql`
@@ -47,8 +47,6 @@ export const getStaticProps: GetStaticProps<{ postCards: PostCard[] }> = async (
   `;
   const { posts: postCards } = await graphqlClient.request(query);
 
-  console.log(postCards);
-  
   return {
     props: {
       postCards,
