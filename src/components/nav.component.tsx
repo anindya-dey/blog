@@ -22,10 +22,10 @@ export default function Nav({ navItems }: INavProps) {
     <>
       <header
         aria-label="Site Header"
-        className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700"
+        className="bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700"
       >
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+        <div className="w-11/12 max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8 md:w-9/12 lg:w-10/12">
+          <div className="flex items-center justify-between h-16">
             <div className="md:flex md:items-center md:gap-12">
               <h1 className="text-3xl font-bold text-gray-600 dark:text-gray-200">
                 AD.
@@ -52,7 +52,7 @@ export default function Nav({ navItems }: INavProps) {
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
                 <button
-                  className="transition inline-block rounded-full border border-gray-600 p-3 text-gray-600 hover:bg-gray-600 hover:text-gray-200 focus:outline-none focus:ring-0 active:bg-gray-600"
+                  className="inline-block p-3 text-gray-600 transition border border-gray-600 rounded-full hover:bg-gray-600 hover:text-gray-200 focus:outline-none focus:ring-0 active:bg-gray-600"
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 >
                   <span className="sr-only">Theme Toggle</span>
@@ -94,11 +94,11 @@ export default function Nav({ navItems }: INavProps) {
               <div className="block md:hidden">
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="transition inline-block rounded-full border border-gray-600 p-3 text-gray-600 hover:bg-gray-600 hover:text-gray-200 focus:outline-none focus:ring-0 active:bg-gray-600"
+                  className="inline-block p-3 text-gray-600 transition border border-gray-600 rounded-full hover:bg-gray-600 hover:text-gray-200 focus:outline-none focus:ring-0 active:bg-gray-600"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
+                    className="w-5 h-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
